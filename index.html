@@ -88,18 +88,33 @@
                   document.getElementById("calculate").addEventListener("click", calculateScore);
                   function calculateScore()
                   {
-                    document.getElementById("name1").value = ""; 
-                    document.getElementById("name2").value = "";
+                 
+
                     let name1 = document.getElementById("name1")
                     let name2 = document.getElementById("name2")
                     let loveScore = Math.random() * 100;
                     loveScore = Math.floor(loveScore) + 1;
+                  
+                    if (name1.value === "" && name2.value === "") {
+                        name1.value = "Enter your name please";
+                        name2.value = "Enter your crush's name too"
+
+                        setTimeout(() => { 
+                          return; 
+                        }, 10000); 
                     
-                    if (loveScore > 50)
-                    {
+                    } else if (loveScore > 50){
+                      setTimeout(() => {
+
                       document.getElementById("result1").style.display = "flex";
+                      document.getElementById("result1").querySelector("span").className = "service-icon rounded-circle mx-auto mb-3 mt-4";
+                      document.getElementById("result1").querySelector("i").className = "icon-heart"
+                      document.getElementById("result1").querySelector("h4 strong").textContent = "GREAT STRONG LOVE";
                       document.getElementById("result1").querySelector("p").textContent = "Congratulations, you are compatible! Your Score is "+loveScore;
-                      window.location.hash = "result1";
+                      name1.value = ""; 
+                      name2.value = "";
+                    }, 0);
+
                     } else if (loveScore <= 49) {
 
                       setTimeout(() => {
@@ -108,20 +123,21 @@
                         document.getElementById("result1").querySelector("i").className = "icon-ban"
                         document.getElementById("result1").querySelector("h4 strong").textContent = "OWH NO, CRAPPY LOVE";
                         document.getElementById("result1").querySelector("p").textContent = "Try again, better luck next time! Your score is only "+loveScore;
-                      }, 0);
+                        name1.value = ""; 
+                        name2.value = "";
+                    }, 0);
 
-                    }
-                    else {
+                    } else {
                       document.getElementById("result1").style.display = "none";
-                      document.getElementById("result2").style.display = "none";
                     }
+
                   }
 
                 </script>
             </div>
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="content-section-footer">
-                    <p class="text-secondary mb-0">Dont Forget To Scroll Down for Comment<br> after calculating</p>
+                    <p class="text-secondary mb-0">Don't Forget To Scroll Down for Comment<br> after calculating</p>
                 </div>
             </div>
         </section>
@@ -137,7 +153,7 @@
                   <p class="lead mb-5">
                     Share your thoughts and experiences below! <br>
                     Comments will be emailed to me directly, make sure to add your name <br>
-                    Comments shown below will  diappear after refresh, haven't learnt nodeJS for server side yet, hehe)
+                    Comments shown below will  disappear after refresh, haven't learnt nodeJS for server side yet, hehe)
                   </p>
                   <p class="lead-mb-5">
 
