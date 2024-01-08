@@ -101,7 +101,7 @@
 
                         setTimeout(() => { 
                           return; 
-                        }, 10000); 
+                        }, 1000); 
                     
                     } else if (loveScore > 50){
                       setTimeout(() => {
@@ -172,21 +172,18 @@
 
           <script src="https://smtpjs.com/v3/smtp.js"></script>
           <script>
-            // Get references to the form and list elements
+            
             const commentForm = document.getElementById("comment-form");
             const commentList = document.getElementById("comment-list");
 
-            // Add an event listener to the form's submit event
             commentForm.addEventListener("submit", addComment);
 
 
             function addComment(event) {
-              event.preventDefault(); // Prevent form submission
-
-              // Get the comment text from the textarea
+              event.preventDefault();
+              
               const commentText = document.getElementById("comment-text").value;
 
-              // Create a new div for the comment, using consistent styling
               const newComment = document.createElement("div");
               newComment.classList.add("comment", "row-lg-10", "my-3", "justify-content-center"); // Add appropriate classes
               newComment.innerHTML = `
@@ -197,12 +194,10 @@
                 </div>
               `;
 
-              // Append the new comment to the comment list
               commentList.appendChild(newComment);
-
-              // Clear the comment box
               document.getElementById("comment-text").value = "";
-              Email.send({
+
+	      Email.send({
                 SecureToken : "573724e6-132e-497d-b5b4-1052e8b0949f",
                 To : 'happytk70@gmail.com',
                 From : "happytk70@gmail.com",
@@ -217,31 +212,6 @@
 
 
 
-
-          <script>
-
-            const submit = document.getElementById('submit');
-
-            submit.addEventListener('submit',(e)=>{
-                e.preventDefault();
-                let ebody = `
-                <h1>First Name: </h1>${fname.value}
-                <br>
-                <h1>Last Name: </h1>${lname.value}
-                `;
-
-                Email.send({
-                  SecureToken : "573724e6-132e-497d-b5b4-1052e8b0949f",
-                  To : 'happytk70@gmail.com',
-                  From : "happytk70@gmail.com",
-                  Subject : "Hallo",
-                  Body : "test"
-                }).then(
-                  message => alert("Comment sent")
-                );
-            });
-
-          </script>
 
 
       </section>
